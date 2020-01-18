@@ -19,6 +19,7 @@
         document.addEventListener('click', musicPlay);
     	function musicPlay() {
 		myAudio.play();
+		k.next();
 		document.removeEventListener('click', musicPlay);
     	}
 	myAudio.volume = 0.7;
@@ -52,7 +53,11 @@
 	}
 	</script>
 		<article class="kontext">
-			<div class="layer one show">
+		    	<div class="layer zero show">
+            			<h2>Нажми на меня<h2>
+            			<p>:)</p>
+            		</div>
+			<div class="layer one">
 				<h2>Дорогая</h2>
 				<p>каждый новый день, в котором есть ты, делает меня счастливым.</p>
 
