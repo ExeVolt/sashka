@@ -63,6 +63,10 @@ body {
 	margin: 0;
 }
 
+.layer.zero {
+    background: #ffa474;
+}
+
 .layer.one {
 	background: #dc6c5f;
 }
