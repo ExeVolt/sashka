@@ -16,6 +16,11 @@
 	<audio id="music" src="James_Onohan_Fall_In_Love_Piano_Music_-_Only_You.mp3" autoplay="autoplay" ontimeupdate="updateTrackTime(this);"></audio>
 	<script type="text/javascript">
 	myAudio = document.getElementById("music");
+        document.addEventListener('click', musicPlay);
+    	function musicPlay() {
+		myAudio.play();
+		document.removeEventListener('click', musicPlay);
+    	}
 	myAudio.volume = 0.7;
 	var layer = 0;
 
