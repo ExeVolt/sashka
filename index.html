@@ -1,0 +1,125 @@
+﻿<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+
+		<title>Sasha I Love U</title>
+
+		<meta name="description" content="Sashka I Love U">
+		<meta name="author" content="Eugene">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/kontext.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+	<audio id="music" src="James_Onohan_Fall_In_Love_Piano_Music_-_Only_You.mp3" autoplay="autoplay" ontimeupdate="updateTrackTime(this);"></audio>
+	<script type="text/javascript">
+	myAudio = document.getElementById("music");
+	myAudio.volume = 0.7;
+	var layer = 0;
+
+	function updateTrackTime(track){
+		var currTime = Math.floor(track.currentTime);
+		
+		if (currTime==6 & layer==0)
+		{
+			layer++;
+			k.next();
+		}
+		else if (currTime==12 & layer==1)
+		{
+			layer++;
+			k.next();
+		}
+		else if (currTime==19 & layer==2)
+		{
+			layer++;
+			k.next();
+		}
+		else if (currTime==22 & layer==3)
+		{
+			layer++;
+			document.getElementById("bull").className = "bullets";
+			init();
+		}
+		return;
+	}
+	</script>
+		<article class="kontext">
+			<div class="layer one show">
+				<h2>Дорогая</h2>
+				<p>каждый новый день, в котором есть ты, делает меня счастливым.</p>
+
+			</div>
+			<div class="layer two">
+				<h2>Я</h2>
+				<p>всегда буду рядом, ведь моя жизнь – это ты.</p>
+			</div>
+			<div class="layer three">
+				<h2>Тебя</h2>
+				<p>в моем сердце больше, чем ты можешь себе представить.</p>
+			</div>
+			<div class="layer four">
+				<h2>Люблю</h2>
+				<p>дышу и живу тобой, родная <3</p>
+			</div>
+		</article>
+
+		<ul id="bull" class="bullets hide"></ul>
+
+		<script src="js/kontext.js"></script>
+		<script>
+			var k = kontext( document.querySelector( '.kontext' ) );
+
+			var bulletsContainer = document.body.querySelector( '.bullets' );
+
+			for( var i = 0, len = k.getTotal(); i < len; i++ ) {
+				var bullet = document.createElement( 'li' );
+				bullet.className = i === 0 ? 'active' : '';
+				bullet.setAttribute( 'index', i );
+				bullet.onclick = function( event ) { k.show( event.target.getAttribute( 'index' ) ) };
+				bullet.ontouchstart = function( event ) { k.show( event.target.getAttribute( 'index' ) ) };
+				bulletsContainer.appendChild( bullet );
+			}
+
+			k.changed.add( function( layer, index ) {
+				var bullets = document.body.querySelectorAll( '.bullets li' );
+				for( var i = 0, len = bullets.length; i < len; i++ ) {
+					bullets[i].className = i === index ? 'active' : '';
+				}
+			} );
+
+			function init() {
+
+				document.addEventListener( 'keyup', function( event ) {
+					if( event.keyCode === 37 ) k.prev();
+					if( event.keyCode === 39 ) k.next();
+				}, false );
+
+				var touchX = 0;
+				var touchConsumed = false;
+
+				document.addEventListener( 'touchstart', function( event ) {
+					touchConsumed = false;
+					lastX = event.touches[0].clientX;
+				}, false );
+
+				document.addEventListener( 'touchmove', function( event ) {
+					event.preventDefault();
+
+					if( !touchConsumed ) {
+						if( event.touches[0].clientX > lastX + 10 ) {
+							k.prev();
+							touchConsumed = true;
+						}
+						else if( event.touches[0].clientX < lastX - 10 ) {
+							k.next();
+							touchConsumed = true;
+						}
+					}
+				}, false );
+			}
+		</script>
+	</body>
+</html>
